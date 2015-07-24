@@ -1,0 +1,15 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "A library that provides extension methods for System.IO.FileInfo to support symbolic links using the code from Troy Parsons' blog post http://troyparsons.com/blog/2012/03/symbolic-links-in-c-sharp/.",
+  "authors": [ "Michael Melancon" ],
+  "tags": [ "symlink, extension method, symbolic link" ],
+  "projectUrl": "https://github.com/michaelmelancon/symboliclinksupport.git",
+  "licenseUrl": "https://github.com/michaelmelancon/symboliclinksupport/blob/master/LICENSE.md",
+
+  "dependencies": {
+  },
+
+  "frameworks" : {
+    "dnx40": { }
+  }
+}
