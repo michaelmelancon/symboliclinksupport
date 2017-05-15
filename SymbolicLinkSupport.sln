@@ -1,16 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{64A5080A-DADC-4662-B357-809C1B1FE2D9}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{667763F9-8E49-43CA-B239-6CCC222462AF}"
 	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE.md = LICENSE.md
+		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SymbolicLinkSupport", "src\SymbolicLinkSupport\SymbolicLinkSupport.xproj", "{49A94B6C-7EB2-4749-8BCF-AE58B3BDB7FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SymbolicLinkSupport", "SymbolicLinkSupport\SymbolicLinkSupport.csproj", "{A4E5A692-EE78-49D9-82CC-54AD53BD8A44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,15 +19,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{49A94B6C-7EB2-4749-8BCF-AE58B3BDB7FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49A94B6C-7EB2-4749-8BCF-AE58B3BDB7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49A94B6C-7EB2-4749-8BCF-AE58B3BDB7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49A94B6C-7EB2-4749-8BCF-AE58B3BDB7FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4E5A692-EE78-49D9-82CC-54AD53BD8A44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4E5A692-EE78-49D9-82CC-54AD53BD8A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4E5A692-EE78-49D9-82CC-54AD53BD8A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4E5A692-EE78-49D9-82CC-54AD53BD8A44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{49A94B6C-7EB2-4749-8BCF-AE58B3BDB7FE} = {64A5080A-DADC-4662-B357-809C1B1FE2D9}
 	EndGlobalSection
 EndGlobal

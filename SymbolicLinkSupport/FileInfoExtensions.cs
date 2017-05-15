@@ -28,7 +28,6 @@ namespace SymbolicLinkSupport
             return SymbolicLink.GetTarget(it.FullName) != null;
         }
 
-
         /// <summary>
         /// Determines whether the target of this symbolic link still exists.
         /// </summary>
