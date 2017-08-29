@@ -39,7 +39,7 @@ namespace SymbolicLinkSupport
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern bool CreateSymbolicLink(string lpSymlinkFileName, string lpTargetFileName, int dwFlags);
 
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         private static extern bool DeviceIoControl(
             IntPtr hDevice,
             uint dwIoControlCode,
@@ -83,7 +83,7 @@ namespace SymbolicLinkSupport
             return target != null;
         }
 
-        private static SafeFileHandle getFileHandle(string path)
+        private static SafeFileHandle GetFileHandle(string path)
         {
             return CreateFile(path, genericReadAccess, shareModeAll, IntPtr.Zero, openExisting,
                 fileFlagsForOpenReparsePointAndBackupSemantics, IntPtr.Zero);
@@ -93,24 +93,26 @@ namespace SymbolicLinkSupport
         {
             SymbolicLinkReparseData reparseDataBuffer;
 
-            using (SafeFileHandle fileHandle = getFileHandle(path))
+            using (SafeFileHandle fileHandle = GetFileHandle(path))
             {
                 if (fileHandle.IsInvalid)
                 {
                     Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error());
                 }
-
+#if NET35
                 int outBufferSize = Marshal.SizeOf(typeof(SymbolicLinkReparseData));
+#else
+                int outBufferSize = Marshal.SizeOf<SymbolicLinkReparseData>();
+#endif
                 IntPtr outBuffer = IntPtr.Zero;
                 try
                 {
                     outBuffer = Marshal.AllocHGlobal(outBufferSize);
-                    int bytesReturned;
                     bool success = DeviceIoControl(
                         fileHandle.DangerousGetHandle(), ioctlCommandGetReparsePoint, IntPtr.Zero, 0,
-                        outBuffer, outBufferSize, out bytesReturned, IntPtr.Zero);
+                        outBuffer, outBufferSize, out int bytesReturned, IntPtr.Zero);
 
-                    fileHandle.Close();
+                    fileHandle.Dispose();
 
                     if (!success)
                     {
@@ -121,8 +123,12 @@ namespace SymbolicLinkSupport
                         Marshal.ThrowExceptionForHR(Marshal.GetHRForLastWin32Error());
                     }
 
+#if NET35
                     reparseDataBuffer = (SymbolicLinkReparseData)Marshal.PtrToStructure(
                         outBuffer, typeof(SymbolicLinkReparseData));
+#else
+                    reparseDataBuffer = Marshal.PtrToStructure<SymbolicLinkReparseData>(outBuffer);
+#endif
                 }
                 finally
                 {

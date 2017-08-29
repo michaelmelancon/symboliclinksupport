@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net35</TargetFramework>
+    <TargetFrameworks>net35;netstandard1.3</TargetFrameworks>
     <Version>1.0.2</Version>
     <Description>A library that provides extension methods for System.IO.FileInfo to support symbolic links using the code from Troy Parsons' blog post http://troyparsons.com/blog/2012/03/symbolic-links-in-c-sharp/.</Description>
     <Authors>Michael Melancon</Authors>
