@@ -8,8 +8,7 @@ namespace SymbolicLinkSupport
     [StructLayout(LayoutKind.Sequential)]
     internal struct SymbolicLinkReparseData
     {
-        // Not certain about this!
-        private const int maxUnicodePathLength = 260 * 2;
+        private const int maxUnicodePathLength = 32767 * 2;
 
         public uint ReparseTag;
         public ushort ReparseDataLength;
