@@ -36,7 +36,7 @@ namespace SymbolicLinkSupport
         /// <exception cref="System.ArgumentException">If the directory is not a symbolic link.</exception>
         public static bool IsSymbolicLinkValid(this DirectoryInfo directoryInfo)
         {
-            return File.Exists(directoryInfo.GetSymbolicLinkTarget());
+            return Directory.Exists(directoryInfo.GetSymbolicLinkTarget());
         }
 
         /// <summary>
