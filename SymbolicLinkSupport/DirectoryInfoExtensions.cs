@@ -13,9 +13,10 @@ namespace SymbolicLinkSupport
         /// </summary>
         /// <param name="directoryInfo">the source directory for the symbolic link.</param>
         /// <param name="path">the path of the symbolic link.</param>
-        public static void CreateSymbolicLink(this DirectoryInfo directoryInfo, string path)
+        /// <param name="makeTargetPathRelative">whether the target should be made relative to the symbolic link. Default <c>false</c>.</param>
+        public static void CreateSymbolicLink(this DirectoryInfo directoryInfo, string path, bool makeTargetPathRelative = false)
         {
-            SymbolicLink.CreateDirectoryLink(path, directoryInfo.FullName);
+            SymbolicLink.CreateDirectoryLink(path, directoryInfo.FullName, makeTargetPathRelative);
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace SymbolicLinkSupport
         /// <exception cref="System.ArgumentException">If the directory is not a symbolic link.</exception>
         public static bool IsSymbolicLinkValid(this DirectoryInfo directoryInfo)
         {
-            return File.Exists(directoryInfo.GetSymbolicLinkTarget());
+            return Directory.Exists(directoryInfo.GetSymbolicLinkTarget());
         }
 
         /// <summary>
