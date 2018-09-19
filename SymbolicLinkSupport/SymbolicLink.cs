@@ -80,8 +80,12 @@ namespace SymbolicLinkSupport
             string pszTo,
             FileAttributes dwAttrTo);
 
+        public static void CreateDirectoryLink(string linkPath, string targetPath)
+        {
+            CreateDirectoryLink(linkPath, targetPath, false);
+        }
 
-        public static void CreateDirectoryLink(string linkPath, string targetPath, bool makeTargetPathRelative = false)
+        public static void CreateDirectoryLink(string linkPath, string targetPath, bool makeTargetPathRelative)
         {
             if (makeTargetPathRelative)
             {
@@ -101,7 +105,12 @@ namespace SymbolicLinkSupport
             }
         }
 
-        public static void CreateFileLink(string linkPath, string targetPath, bool makeTargetPathRelative = false)
+        public static void CreateFileLink(string linkPath, string targetPath)
+        {
+            CreateFileLink(linkPath, targetPath, false);
+        }
+        
+        public static void CreateFileLink(string linkPath, string targetPath, bool makeTargetPathRelative)
         {
             if (makeTargetPathRelative)
             {
@@ -114,7 +123,7 @@ namespace SymbolicLinkSupport
             }
         }
         
-        public static string GetTargetPathRelativeToLink(string linkPath, string targetPath, bool linkAndTargetAreDirectories = false)
+        private static string GetTargetPathRelativeToLink(string linkPath, string targetPath, bool linkAndTargetAreDirectories = false)
         {
             string returnPath;
 

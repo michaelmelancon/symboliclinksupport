@@ -14,9 +14,19 @@ namespace SymbolicLinkSupport
         /// <param name="it">the source file for the symbolic link.</param>
         /// <param name="path">the path of the symbolic link.</param>
         /// <param name="makeTargetPathRelative">whether the target should be made relative to the symbolic link. Default <c>false</c>.</param>
-        public static void CreateSymbolicLink(this FileInfo it, string path, bool makeTargetPathRelative = false)
+        public static void CreateSymbolicLink(this FileInfo it, string path, bool makeTargetPathRelative)
         {
             SymbolicLink.CreateFileLink(path, it.FullName, makeTargetPathRelative);
+        }
+
+        /// <summary>
+        /// Creates a symbolic link to this file at the specified path.
+        /// </summary>
+        /// <param name="it">the source file for the symbolic link.</param>
+        /// <param name="path">the path of the symbolic link.</param>
+        public static void CreateSymbolicLink(this FileInfo it, string path)
+        {
+            it.CreateSymbolicLink(path, false);
         }
 
         /// <summary>

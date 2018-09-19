@@ -1,12 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net35;netstandard1.3</TargetFrameworks>
-    <Version>1.1.1</Version>
+    <Version>1.2.0</Version>
     <Description>A library that provides extension methods for System.IO.FileInfo and System.IO.DirectoryInfo to support symbolic links using the code from Troy Parsons' blog post http://troyparsons.com/blog/2012/03/symbolic-links-in-c-sharp/.</Description>
     <Authors>Michael Melancon</Authors>
     <PackageTags>symlink, extension method, symbolic link</PackageTags>
     <PackageProjectUrl>https://github.com/michaelmelancon/symboliclinksupport.git</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/michaelmelancon/symboliclinksupport/blob/master/LICENSE.md</PackageLicenseUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeDocumentationProjectOutputGroup>True</IncludeDocumentationProjectOutputGroup>
+    <DocumentationFile Condition="'$(Configuration)'=='Release'">bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
 </Project>
