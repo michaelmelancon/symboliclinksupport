@@ -18,7 +18,9 @@ namespace SymbolicLinkSupport
         public ushort PrintNameOffset;
         public ushort PrintNameLength;
         public uint Flags;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = maxUnicodePathLength)]
+        // PathBuffer needs to be able to contain both SubstituteName and PrintName,
+        // so needs to be 2 * maximum of each
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = maxUnicodePathLength * 2)]
         public byte[] PathBuffer;
     }
 }
